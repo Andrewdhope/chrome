@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            button {
-                outline: none;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body>
         <datalist id="playerDatalist"></datalist>
-        <input type="text" id="searchText" list="playerDatalist" autofocus />
-        <button id="submit">Submit</button>
+        <div id="input-controls">
+            <input type="text" id="searchText" list="playerDatalist" autofocus />
+            <button id="submit" />
+        </div>
         <table id="tableDom"></table>
+        <a id="source" href="https://www.basketball-reference.com/contracts/players.html" target="_blank">source</a>
+        <p id="options-note"></p>
         <script src="salary_search.js"></script>
     </body>
 </html>

@@ -1,0 +1,61 @@
+body {
+    background-color: #bbb;
+    height: 50px;
+}
+
+div#input-controls {
+    width: max-content;
+}
+
+input#searchText {
+    vertical-align: top;
+    width: 260px;
+}
+
+button#submit {
+    background-image: url('./images/arrow-right-circle.png');
+    background-color: transparent;
+    width: 24px;
+    height: 24px;
+    padding: 0px;
+    border: none;
+}
+
+table#tableDom {
+    margin: 0 auto;
+    text-align: center;
+}
+
+td#nodata {
+    font-style: italic;    
+}
+
+a#source {
+    display: inline;
+    width: min-content;
+    color: #b54213;
+    font-size: 75%;
+    font-style: italic;
+    text-decoration: none;
+    padding-left: 2px;
+}
+
+a#source:visited {
+    color: #b54213;    
+}
+
+th.salary-pl:after, th.salary-tm:after {
+    content: "*"
+}
+
+p#options-note {
+    display: none;   
+    font-size: 75%;
+    font-style: italic;
+    float: right;
+    margin: 0px;
+}
+
+:focus {
+    outline-color: #b54213;    
+}
