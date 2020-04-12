@@ -44,7 +44,7 @@ a#source:visited {
     color: #b54213;    
 }
 
-th.salary-pl:after, th.salary-tm:after {
+th.salary-pl:after, th.salary-tm:after, th.salary-et:after {
     content: "*"
 }
 
@@ -54,6 +54,7 @@ p#options-note {
     font-style: italic;
     float: right;
     margin: 0px;
+    padding-top: 3px;
 }
 
 :focus {

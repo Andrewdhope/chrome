@@ -1,5 +1,9 @@
-// icons, submission?
-// github update
+// developer guide (https://developer.chrome.com/webstore)
+//  - Google Analytics
+//  - Suppying images
+// git push
+// wait a week
+// submit?
 // be done!
 
 // globals
@@ -82,6 +86,7 @@ function parseFullDom(fullDom, searchName) {
         
         if (playerName == searchName) {
             annualSalaries = getSalaries(tableDiv.rows[i], optionsData);
+            break;
         }
     }
     buildTable(searchName, leagueYears, annualSalaries, optionsData);
@@ -136,22 +141,29 @@ function buildTable(searchName, leagueYears, annualSalaries, optionsData) {
                 optionsNote.appendChild(optionsText);
                 optionsNote.style.display = 'inline';
             }
+            else if (optionsData[index].includes("salary-et")) {
+                th.className = 'salary-et'; // asterisk added with css
+                let optionsText = document.createTextNode('*early termination option');
+                if (optionsNote.firstChild) {optionsNote.removeChild(optionsNote.firstChild);}
+                optionsNote.appendChild(optionsText);
+                optionsNote.style.display = 'inline';
+            }
             else {
                 optionsNote.style.display = 'none';    
             }
             
             // leage year header row
             leagueYearRow.appendChild(th);
+            thName.setAttribute('colspan', index+1);
             
             // annual salary cells
             let td = document.createElement('td');
             let tdText = document.createTextNode(item);
             td.appendChild(tdText);
-            
             annualSalariesRow.appendChild(td);
-            thName.setAttribute('colspan', index+1);
         }
     }
+    // error handling
     if (annualSalaries.length == 0) {
         let td = document.createElement('td');
         td.setAttribute('id',"nodata");
@@ -174,7 +186,7 @@ function getSalaries(tr, optionsData) {
     // loop through the td siblings and get salaries for the six league years
     for (let i = 0; i < tr.childElementCount; i++) {
         td = td.nextElementSibling;
-        if (td == null) {continue;} // pqa
+        if (td == null) {continue;}
         if (pattern.test(td.attributes['data-stat'].value)) {
                 optionsData.push(td.className); // the td class indicates player or team options
                 salaryArray.push(td.textContent);
@@ -197,7 +209,7 @@ function getHeaderYears(tableHead) {
     // loop through the tr children and look for the six league years
     for (let i = 0; i < tr.childElementCount; i++) {
         let th = tr.children[i];
-        if (th == null) {continue;} // pqa
+        if (th == null) {continue;}
         // check the data-stat of the child element
         if (pattern.test(th.attributes['data-stat'].value)) {
                 years.push(th.textContent);
