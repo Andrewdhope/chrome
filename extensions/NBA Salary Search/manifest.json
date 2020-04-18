@@ -1,0 +1,28 @@
+{
+  "name": "NBA Salary Search",
+  "version": "2.1",
+  "description": "Displays NBA player contract data.",
+ 
+  "icons": {
+     "16": "images/basketball16-iconfinder.png",
+     "32": "images/basketball32-iconfinder.png",
+     "48": "images/basketball48-iconfinder.png",
+    "128": "images/basketball128-iconfinder.png"
+  },
+  
+  "permissions": [
+    "https://www.basketball-reference.com/"
+  ],
+  "browser_action": {
+    "default_popup": "SalarySearch.html"
+  },
+  "commands": {
+    "_execute_browser_action": {
+        "suggested_key": {
+            "default": "Ctrl+Shift+4",
+            "mac": "MacCtrl+Shift+4"
+        }
+    }
+  },
+  "manifest_version": 2
+}
