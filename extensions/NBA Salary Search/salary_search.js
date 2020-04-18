@@ -1,10 +1,3 @@
-// developer guide (https://developer.chrome.com/webstore)
-//  - Google Analytics
-//  - Suppying images
-// wait a week
-// submit?
-// be done!
-
 // globals
 let fullDom
 let searchName
