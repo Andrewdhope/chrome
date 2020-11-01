@@ -56,6 +56,15 @@ submit.onclick = function() {
     parseFullDom(fullDom, searchName);
 }
 
+// submit with Enter
+let searchText = document.getElementById('searchText');
+searchText.addEventListener("keyup", function(event) {
+	if (event.key === "Enter") {
+		document.getElementById('submit').click();
+		document.getElementById('submit').focus();
+	}
+})
+
 function parseFullDom(fullDom, searchName) {
     let tableHead = fullDom.querySelector('table#player-contracts thead'); // HTMLTableSelectionElement
     let tableDiv = fullDom.querySelector('table#player-contracts tbody'); // HTMLTableElement
