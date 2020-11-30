@@ -1,3 +1,7 @@
+// developer guide (https://developer.chrome.com/webstore)
+//  - Google Analytics
+//  - Suppying images
+
 // globals
 let fullDom
 let searchName
@@ -16,8 +20,7 @@ function getAjaxObject() {
             
             const parser = new DOMParser();
             fullDom = parser.parseFromString(resp, 'text/html');
-            fullDom = fullDom.querySelector('table#player-contracts'); // reduce DOM
-			
+            
             // build datalist on load
             buildDatalist(fullDom);
             }
@@ -39,6 +42,9 @@ function buildDatalist(fullDom) {
 
         // get player name string
         let playerName = tableDiv.rows[i].cells[1].firstChild.text // <a> node; no simple query selector
+        if (playerName === "") {
+            playerName = tableDiv.rows[i].cells[1].firstChild.nextElementSibling.text
+        }
         let option = document.createElement('option');
         option.setAttribute('value', playerName);
         playerDatalist.appendChild(option);
@@ -56,15 +62,15 @@ submit.onclick = function() {
     parseFullDom(fullDom, searchName);
 }
 
-// submit with Enter
+// submit with enter
 let searchText = document.getElementById('searchText');
-searchText.addEventListener("keyup", function(event) {
-	if (event.key === "Enter") {
-		document.getElementById('submit').click();
-		document.getElementById('submit').focus();
-	}
+searchText.addEventListener("keyup", function(event) { 
+    if (event.key === "Enter")  {
+        document.getElementById('submit').click();
+        document.getElementById('submit').focus();
+    }
 })
-
+                            
 function parseFullDom(fullDom, searchName) {
     let tableHead = fullDom.querySelector('table#player-contracts thead'); // HTMLTableSelectionElement
     let tableDiv = fullDom.querySelector('table#player-contracts tbody'); // HTMLTableElement
@@ -81,7 +87,10 @@ function parseFullDom(fullDom, searchName) {
         }
 
         // get player name string
-        let playerName = tableDiv.rows[i].cells[1].firstChild.text // <a> node     
+        let playerName = tableDiv.rows[i].cells[1].firstChild.text // <a> node 
+        if (playerName === "") {
+            playerName = tableDiv.rows[i].cells[1].firstChild.nextElementSibling.text
+        }
         
         searchName = searchName.toUpperCase();
         if (playerName) {playerName = playerName.toUpperCase();}
