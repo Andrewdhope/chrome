@@ -1,6 +1,6 @@
 {
   "name": "NBA Salary Search",
-  "version": "2.2",
+  "version": "2.3",
   "description": "A lightweight browser extension that displays FAST contract data for active NBA players.",
  
   "icons": {
